@@ -1,0 +1,32 @@
+# Start from official Open WebUI base
+FROM ghcr.io/open-webui/open-webui:main
+
+# Metadata
+LABEL maintainer="anders@kruse.com"
+LABEL description="Open WebUI with Scaleway Gen AI integration"
+LABEL version="1.0.0"
+
+# Copy custom configuration
+COPY backend/open_webui/config/custom/ /app/backend/open_webui/config/custom/
+
+# Install additional dependencies for advanced RAG (optional)
+RUN pip install --no-cache-dir \
+    langchain==0.1.0 \
+    langchain-openai==0.0.5 \
+    psycopg2-binary==2.9.9
+
+# Set default environment variables for Scaleway
+ENV SCALEWAY_API_BASE=https://api.scaleway.ai/v1 \
+    OPENAI_API_BASE_URL=https://api.scaleway.ai/v1 \
+    VECTOR_DB=pgvector \
+    ENABLE_RAG_WEB_LOADER_SSL_VERIFICATION=True
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:8080/health || exit 1
+
+# Expose port
+EXPOSE 8080
+
+# Use default start command from base image
+CMD ["/bin/bash", "/app/backend/start.sh"]
