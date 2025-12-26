@@ -44,9 +44,10 @@ else
       environment-variables.DATABASE_URL="$DATABASE_URL" \
       environment-variables.VECTOR_DB="pgvector" \
       environment-variables.SCALEWAY_API_KEY="$SCW_SECRET_KEY" \
-      environment-variables.SCALEWAY_API_BASE="https://api.scaleway.ai/v1" \
-      environment-variables.SCALEWAY_PROJECT_ID="$SCW_DEFAULT_PROJECT_ID" \
-      environment-variables.OPENAI_API_BASE_URL="https://api.scaleway.ai/v1" \
+      environment-variables.SCALEWAY_API_BASE="$SCALEWAY_API_BASE" \
+      environment-variables.SCALEWAY_PROJECT_ID="$SCALEWAY_PROJECT_ID" \
+      environment-variables.SCALEWAY_DEFAULT_MODEL="gpt-oss-120b" \
+      environment-variables.OPENAI_API_BASE_URL="$SCALEWAY_API_BASE" \
       environment-variables.OPENAI_API_KEY="$SCW_SECRET_KEY" \
       environment-variables.WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" \
       environment-variables.WEBUI_AUTH="True" \

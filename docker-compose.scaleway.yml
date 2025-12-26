@@ -31,9 +31,10 @@ services:
       - DATABASE_URL=postgresql://openwebui:${DB_PASSWORD:-changeMe123}@postgres:5432/openwebui
       - VECTOR_DB=pgvector
       - SCALEWAY_API_KEY=${SCW_SECRET_KEY}
-      - SCALEWAY_API_BASE=https://api.scaleway.ai/v1
+      - SCALEWAY_API_BASE=${SCALEWAY_API_BASE}
       - SCALEWAY_PROJECT_ID=${SCW_DEFAULT_PROJECT_ID}
-      - OPENAI_API_BASE_URL=https://api.scaleway.ai/v1
+      - SCALEWAY_DEFAULT_MODEL=gpt-oss-120b
+      - OPENAI_API_BASE_URL=${SCALEWAY_API_BASE}
       - OPENAI_API_KEY=${SCW_SECRET_KEY}
       - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
       - WEBUI_AUTH=True

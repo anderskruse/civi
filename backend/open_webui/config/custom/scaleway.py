@@ -24,16 +24,12 @@ class ScalewayConfig:
     def available_models(self) -> List[str]:
         """List of Scaleway Gen AI models"""
         return [
-            "llama-3.3-70b-instruct",
-            "llama-3.1-8b-instruct",
-            "qwen2.5-coder-32b-instruct",
-            "mistral-small-3.1-24b-instruct",
-            "pixtral-12b-2409",
+            "gpt-oss-120b",
         ]
 
     @property
     def default_model(self) -> str:
-        return os.getenv("SCALEWAY_DEFAULT_MODEL", "llama-3.3-70b-instruct")
+        return os.getenv("SCALEWAY_DEFAULT_MODEL", "gpt-oss-120b")
 
     @property
     def embedding_model(self) -> str:
